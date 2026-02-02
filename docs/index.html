@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual DB Designer</title>
+    <link rel="stylesheet" href="js/lib/codemirror.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dark-theme">
+    <div id="app">
+        <header>
+            <div class="logo">
+                <img src="https://menutech.services/assets/img/logomt.png" alt="MenuTech Logo">
+            </div>
+            <div class="header-center">
+                <div class="theme-switcher">
+                    <button class="theme-btn" data-theme="light" title="Light Mode">☀️</button>
+                    <button class="theme-btn active" data-theme="dark" title="Dark Mode">🌙</button>
+                    <button class="theme-btn" data-theme="mid" title="Intermediate Mode">🌓</button>
+                </div>
+            </div>
+            <div class="actions">
+                <button id="export-png" class="secondary-btn">Export PNG</button>
+                <button id="export-json" class="secondary-btn">Export JSON</button>
+                <button id="export-sql" class="secondary-btn">Export SQL</button>
+                <button id="import-btn" class="primary-btn">Import JSON</button>
+                <input type="file" id="import-input" style="display: none;">
+            </div>
+        </header>
+        
+        <main>
+            <aside id="left-sidebar">
+                <div class="panel-section">
+                    <h3>Components</h3>
+                    <div id="table-template" class="template-card">
+                        <div class="table-mini">
+                            <div class="mini-header"></div>
+                            <div class="mini-row"></div>
+                            <div class="mini-row"></div>
+                        </div>
+                        <span>New Table</span>
+                    </div>
+                </div>
+                <div class="panel-section">
+                    <h3>Tables</h3>
+                    <div id="tables-list"></div>
+                </div>
+            </aside>
+            
+            <div id="canvas-container">
+                <div id="canvas"></div>
+                
+                <!-- Floating Cloud Panel -->
+                <div id="cloud-panel" class="floating-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">☁️ Cloud Projects</span>
+                        <div class="panel-controls">
+                            <button id="refresh-cloud-btn" title="Refresh">🔄</button>
+                            <button id="toggle-panel-btn" title="Collapse">−</button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <button id="save-cloud-btn" class="primary-btn full-width">Save Current Project</button>
+                        <div id="cloud-projects-list" class="cloud-list">
+                            <p class="empty-msg">Loading projects...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <aside id="right-sidebar">
+                <div id="properties-panel">
+                    <h3>Properties</h3>
+                    <div id="properties-content">
+                        <p>Select a table or column to edit its properties.</p>
+                    </div>
+                </div>
+                <div id="sql-preview-panel">
+                    <h3>SQL Preview</h3>
+                    <div class="sql-controls">
+                        <select id="sql-dialect">
+                            <option value="standard">Standard SQL</option>
+                            <option value="mysql">MySQL</option>
+                            <option value="postgres">PostgreSQL</option>
+                        </select>
+                        <button id="apply-sql-btn" class="primary-btn mini">Apply SQL</button>
+                    </div>
+                    <div id="sql-editor-container"></div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Libraries -->
+    <script src="js/lib/supabase.js"></script>
+    <script src="js/lib/html2canvas.min.js"></script>
+    <script src="js/lib/dom-to-image.min.js"></script>
+    <script src="js/lib/uuidv4.min.js"></script>
+    <script src="js/lib/jsplumb.min.js"></script>
+    <script src="js/lib/interact.min.js"></script>
+    <script src="js/lib/sortable.min.js"></script>
+    <script src="js/lib/codemirror.min.js"></script>
+    <script src="js/lib/codemirror-sql.min.js"></script>
+
+    <!-- App Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
